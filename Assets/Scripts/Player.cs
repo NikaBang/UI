@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -6,26 +7,28 @@ public class Player : MonoBehaviour
     [SerializeField] private HealthBar _healthBar;
 
     private int _currentHealth;
+    private int _scorPoints = 10;
+
+    public event UnityAction<int, int> HealthChanged;
 
     private void Start()
     {
         _currentHealth = _health;
     }
-    public void ApplyDamage(int damage)
+    public void ApplyDamage()
     {
-        _currentHealth -= damage;
-        _healthBar.OnValueChanged(_currentHealth, _health);
+        _currentHealth -= _scorPoints;
+        HealthChanged?.Invoke(_currentHealth, _health);
 
         if (_currentHealth <= 0)
         {
-            Destroy(gameObject);
             UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 
-    public void ApplyHealed(int healed)
+    public void ApplyHealed()
     {
-        _currentHealth += healed;
+        _currentHealth += _scorPoints;
         _healthBar.OnValueChanged(_currentHealth, _health);
 
         if (_currentHealth >= _health)
