@@ -1,13 +1,11 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _health;
+    [SerializeField] private HealthBar _healthBar;
 
     private int _currentHealth;
-
-    public event UnityAction<int, int> HealthChange;
 
     private void Start()
     {
@@ -16,7 +14,7 @@ public class Player : MonoBehaviour
     public void ApplyDamage(int damage)
     {
         _currentHealth -= damage;
-        HealthChange?.Invoke(_currentHealth, _health);
+        _healthBar.OnValueChanged(_currentHealth, _health);
 
         if (_currentHealth <= 0)
         {
@@ -28,7 +26,7 @@ public class Player : MonoBehaviour
     public void ApplyHealed(int healed)
     {
         _currentHealth += healed;
-        HealthChange?.Invoke(_currentHealth, _health);
+        _healthBar.OnValueChanged(_currentHealth, _health);
 
         if (_currentHealth >= _health)
         {

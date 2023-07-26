@@ -653,10 +653,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 728401593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d37615f177846fa41969a1e5fb1fea1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c6bd9fd0d5f82e4eb4a04bf21d81ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  _healthBar: {fileID: 1497250218}
 --- !u!212 &728401595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1222,8 +1223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61b68ecb5473f04eaa1119b407b683b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slider: {fileID: 1497250219}
-  _player: {fileID: 728401594}
+  _slider: {fileID: 1497250219}
+  _recoveryRate: 0.3
 --- !u!114 &1497250219
 MonoBehaviour:
   m_ObjectHideFlags: 0
